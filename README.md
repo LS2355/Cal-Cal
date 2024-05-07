@@ -6,6 +6,9 @@ you can create preset meals to quickly add to your total
 you can upload images and comments to the meals 
 
 
+customizable where people could add there own features to it like widgets
+make the public or just keep them to them selvs
+
 
 
 
