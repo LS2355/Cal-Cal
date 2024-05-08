@@ -6,8 +6,19 @@ you can create preset meals to quickly add to your total
 you can upload images and comments to the meals 
 
 
+ability to add widgets and customize dashboard.
+can add
+-community created widgets
+-custom colors for app
+-track nutrition
+-macros
+-calories-
+-exersise
+-tips
 
 
+## to run
+same as vite + react
 
 techStack: 
 HTML 

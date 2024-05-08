@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./variables.scss";
+
+
+
+// remeber to import sass files into components ex: import './index.scss'
+
+:root{
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+};
+
+
+
+
+
+@import './app.scss';
+@import './grid.scss';
+@import './settings.scss';

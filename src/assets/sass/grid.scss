@@ -1,0 +1,59 @@
+@import './variables.scss';
+
+.myGrid{
+  max-width: 600px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  display: grid;
+  grid-gap:15px;
+                        // (amount, size)
+  grid-template-columns: repeat(3, 1fr);
+                        // might have to make size bigger
+  grid-template-rows: repeat(5, 125px);
+  grid-auto-flow: row dense; //look more into
+  min-height: 100vh;
+};
+
+.inside{
+  background-color: #fff;
+};
+
+//blocks will be labled block+<width>+ x + <height>
+
+.block3x2{
+  cursor: move;
+  padding: 10px;
+  background-color: aqua;
+  // grid-area: span 1 / span 4; i need to come back and figure out the span for now im going to stick with a square
+};
+
+.block2x2{
+  cursor: move;
+  padding: 10px;
+  background-color: tan;
+  grid-area: span 1 / span 1;
+};
+
+.custom-drag-ghost{
+    /* The original cloned element must not take place up in the page and must not be visible */
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+  /* Just for appearance */
+  background-color: #edb458;
+  border: 1px solid #e8871e;
+};
+
+.hidden-drag-ghost{
+  opacity: 0;
+};
+
+.theTransition{
+  transition: all 2s ease-out .5s;
+  top: 0;
+}
