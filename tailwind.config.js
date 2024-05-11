@@ -13,6 +13,9 @@ export default {
         "color-trim" : "#1db954",
         "color-text" : "white",
         "color-subtext" : "#b3b3b3",
+        "nav-grey" : "#2c2c2c",
+        "nav" : "#1c1c1c",
+        "nav-cardbg" : '#191919'
       }
 
 
