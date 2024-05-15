@@ -4,3 +4,22 @@ $color-secondary: #535353;
 $color-trim:#1db954;
 $color-text:white;
 $color-subtext:#b3b3b3;
+
+// grid items
+$grid-item-border-width: 2px;
+$grid-item-border-color:#1db954;
+$grid-item-border-radius: 9px;
+$grid-item-color: grey;
+
+//log
+
+$log-border-radius: 12px;
+$log-border-color:$color-background-darker;
+$log-title-color:$color-background-darker;
+$log-title-bottom-border: $color-trim;
+
+  //logForm
+  $log-form-border-radius: 12px;
+  $log-form-border-width: 2px;
+  $log-form-border-color: $color-secondary;
+  $log-form-icon-fill: rgb(94, 94, 94);

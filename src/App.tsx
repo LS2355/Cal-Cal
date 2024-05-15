@@ -6,6 +6,7 @@ import Customize from './components/Customize';
 import Settings from './components/Settings';
 import './assets/sass/app.scss';
 
+// import 'gridstack/dist/gridstack.css'
 
 
 function App() {
@@ -13,9 +14,8 @@ function App() {
   return (
     <div className="w-screen h-screen p-0 m-0 overflow-x-hidden text-white bg-color-background sm:flex">
       <Sidebar />
-      <div className='flex justify-center w-full app'>
+      <div className='flex flex-wrap justify-center w-full p-0 m-0 app '>
         {/* going to need to figure out plan for nav bar */}
-        working
          <Routes>
             <Route path='/' element = {
               <Dashboard />

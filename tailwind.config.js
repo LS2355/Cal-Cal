@@ -15,7 +15,7 @@ export default {
         "color-subtext" : "#b3b3b3",
         "nav-grey" : "#2c2c2c",
         "nav" : "#1c1c1c",
-        "nav-cardbg" : '#191919'
+        "nav-cardbg" : '#191919',
       }
 
 
