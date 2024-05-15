@@ -19,7 +19,7 @@ function LogForm (props) {
 
   function handleFormSubmit (e) {
     e.preventDefault()
-    console.log(typeof e)
+    
 
 
 
@@ -40,7 +40,7 @@ function LogForm (props) {
 
   return (
 
-    <form ref={logWrapperRef} onSubmit={(e)=>{handleFormSubmit(e)}} className="absolute flex flex-wrap justify-center w-5/6 p-2 text-black -translate-x-1/2 -translate-y-1/2 shadow-md shadow-black/45 top-1/2 left-1/2 log-form">
+    <form ref={logWrapperRef} onSubmit={(e)=>{handleFormSubmit(e)}} className="absolute flex flex-wrap justify-center w-5/6 p-2 -translate-x-1/2 -translate-y-1/2 shadow-md shadow-black/45 top-1/2 left-1/2 log-form">
       <input type="text" value={logEntry.name} name="name" placeholder="Item Name" className="w-5/6 log-form-input" onChange={handleFormChange} />
       <div className="flex flex-wrap justify-around mt-3">
         <div className="flex flex-wrap justify-center" id="calories-fill">

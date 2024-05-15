@@ -16,6 +16,9 @@ export default {
         "nav-grey" : "#2c2c2c",
         "nav" : "#1c1c1c",
         "nav-cardbg" : '#191919',
+      },
+      flexGrow: {
+        2: "2"
       }
 
 

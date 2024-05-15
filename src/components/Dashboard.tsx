@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,} from "react";
 import {GridStack} from 'gridstack';
 import defaultWidgets from "../Data/widgets.json"
 
@@ -11,9 +11,6 @@ import 'gridstack/dist/gridstack-extra.css'
 function Dashboard () {
 
   const [widgetData, setWidgetData] = useState(defaultWidgets)
-  const [meals, setMeals] = useState({
-    
-  })
   
 useEffect (()=>{
   const grid = GridStack.init({
