@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { GetNutritionInfo } from './components/subcomponts/algorithms';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Log from './components/Log';
@@ -82,7 +83,7 @@ function App() {
   })
 
 
-
+  const [nutritionInfo, setNutritionInfo] = useState(()=>GetNutritionInfo(foodLogEntry))
 
 
 
@@ -92,16 +93,20 @@ function App() {
   return (
     <div className="w-screen h-screen p-0 m-0 overflow-x-hidden text-white bg-color-background sm:flex">
       <Sidebar />
-      <div className='flex flex-wrap justify-center w-full p-0 m-0 app '>
+      <div className='flex flex-wrap justify-center w-full p-0 m-0 app'>
         {/* going to need to figure out plan for nav bar */}
          <Routes>
             <Route path='/' element = {
-              <Dashboard />
+              <Dashboard 
+                nutritionInfo = {nutritionInfo}
+              />
             }/>
             <Route path='/Log' element = {
               <Log 
-              foodLogEntry={foodLogEntry}
-              setFoodLogEntry={setFoodLogEntry}
+              foodLogEntry = {foodLogEntry}
+              setFoodLogEntry = {setFoodLogEntry}
+              nutritionInfo = {nutritionInfo}
+              setNutritionInfo = {setNutritionInfo}
               />
             }/>
             <Route path='/Settings' element = {

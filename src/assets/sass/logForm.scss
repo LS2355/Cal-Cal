@@ -101,6 +101,13 @@
     fill: rgb(211, 0, 0)
   }
 }
+#protine-fill{
+  fill: $log-form-icon-fill;
+  transition: all 300ms;
+  &:hover{
+    fill: rgb(154, 11, 236);
+  }
+}
 #fat-fill{
   fill: $log-form-icon-fill;
   transition: all 300ms;

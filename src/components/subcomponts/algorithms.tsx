@@ -19,7 +19,9 @@ function GetNutritionInfo(entries) {
     //if i want to track more things for each meal add them here
 
     meal.map((entry : FoodEntryItem | FoodEntryMeal)=>{
-      if (entry.type == "meal") countNutritionInfo(entry.ingredients)
+      if (entry.type == "meal") {
+        countNutritionInfo(entry.ingredients)
+      }
         mealCalories += entry.calories;
         mealFat += entry.fat;
         mealCarbs += entry.carbs;
