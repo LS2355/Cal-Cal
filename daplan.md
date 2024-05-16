@@ -23,18 +23,4 @@ make the public or just keep them to them selvs
 >>>>>>> bb45c2a9b73eeae677768e6a3d7b647e0e64ce9a
 
 
-## to run
-same as vite + react
-
-techStack: 
-HTML 
-JS maybe TS
-electron.JS
-
-
-primary color: #2d2d2e
-secondary color: 
-trim color: #ec6f00 or #db6600
-
-
 ![cal-cal-logo](https://github.com/LS2355/Cal-Cal/assets/108366585/7a4b72b1-1db9-49c2-bc19-538040362334)
