@@ -1,5 +1,5 @@
  
-<h1 style="color:white"> Project Name </h1>
+<h1 style="color:white">Cal Cal</h1>
 
  <!-- view live site link -->
  <a href="https://ls2355.github.io/Learning-Hub/">
