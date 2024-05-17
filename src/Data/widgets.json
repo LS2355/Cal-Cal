@@ -1,3 +1,4 @@
 [
-  {"x":2,"y":2,"w":3,"h":1,"content":"default widget"}
+  {"x":2,"y":2,"w":3,"h":1,"content":"default widget"},
+  {"x":0,"y":0,"w":1,"h":1, "content": "test"}
 ]

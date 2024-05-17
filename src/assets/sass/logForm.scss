@@ -98,48 +98,48 @@
   fill: $log-form-icon-fill;
   transition: all 300ms;
   &:hover{
-    fill: rgb(211, 0, 0)
+    fill: $calories;
   }
 }
 #protine-fill{
   fill: $log-form-icon-fill;
   transition: all 300ms;
   &:hover{
-    fill: rgb(154, 11, 236);
+    fill: $protine;
   }
 }
 #fat-fill{
   fill: $log-form-icon-fill;
   transition: all 300ms;
   &:hover{
-    fill: tan
+    fill: $fat;
   }
 }
 #carbs-fill{
   fill: $log-form-icon-fill;
   transition: all 300ms;
   &:hover{
-    fill: wheat;
+    fill: $carbs;
   }
 }
 #serving-size-fill{
   fill: $log-form-icon-fill;
   transition: all 300ms;
   &:hover{
-    fill: rgb(68, 107, 180);
+    fill: $serving-size;
   }
 }
 #serving-type-fill{
   fill: $log-form-icon-fill;
   transition: all 300ms;
   &:hover{
-    fill: greenyellow;
+    fill: $serving-type;
   }
 }
 #servings-fill{
   fill: $log-form-icon-fill;
   transition: all 300ms;
   &:hover{
-    fill: rgb(0, 202, 0);
+    fill: $servings;
   }
 }

@@ -102,12 +102,14 @@ function App() {
               />
             }/>
             <Route path='/Log' element = {
-              <Log 
-              foodLogEntry = {foodLogEntry}
-              setFoodLogEntry = {setFoodLogEntry}
-              nutritionInfo = {nutritionInfo}
-              setNutritionInfo = {setNutritionInfo}
-              />
+              <>
+                <Log 
+                foodLogEntry = {foodLogEntry}
+                setFoodLogEntry = {setFoodLogEntry}
+                nutritionInfo = {nutritionInfo}
+                setNutritionInfo = {setNutritionInfo}
+                />
+              </>
             }/>
             <Route path='/Settings' element = {
               <Settings />

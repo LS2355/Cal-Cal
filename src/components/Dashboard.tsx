@@ -11,12 +11,14 @@ import 'gridstack/dist/gridstack-extra.css'
 function Dashboard ({nutritionInfo}) {
 
   const [widgetData, setWidgetData] = useState(defaultWidgets)
+
   
 useEffect (()=>{
   const grid = GridStack.init({
     float:true,
     cellHeight: "170px",
     minRow: 1,
+    maxRow: 6,
     column: 7,
     disableResize: true,
     margin: 8,
@@ -31,14 +33,11 @@ useEffect (()=>{
 
 
   return(
-    <div className="w-full h-screen ">
-            <div className="grid-stack">
-                <div className=" grid-stack-item ui-draggable-disabled ui-resizable-disabled" data-gs-width="4" data-gs-height="4" gs-w="5" gs-x="1" gs-y="0" gs-no-Move="true">
+    <div className="w-full h-screen overflow-auto">
+            <div className="grid-stack ">
+                <div className=" grid-stack-item ui-draggable-disabled ui-resizable-disabled" data-gs-width="4" data-gs-height="4" gs-w="5" gs-x="1" gs-y="0">
                     <div className=" grid-stack-item-content">
-                    
                       {nutritionInfo.total.calories}                    
-                    
-                    
                     </div>
                 </div>
             </div>

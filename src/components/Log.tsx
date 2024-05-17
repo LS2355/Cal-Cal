@@ -1,8 +1,10 @@
 import { useState} from "react";
 import {TimeStamp } from "./subcomponts/algorithms";
 import LogForm from "./LogForm";
+import Legend from "./Legend";
 import { FormDataInterface } from "./subcomponts/interfaces";
 import '../assets/sass/log.scss';
+import '../assets/sass/legend.scss';
 
 
 
@@ -42,7 +44,7 @@ function Log ({foodLogEntry, setFoodLogEntry, nutritionInfo, setNutritionInfo} :
 
   return(
     <>
-    <div className="relative grid w-full h-full overflow-auto place-content-center">
+    <div className="relative flex flex-wrap justify-center w-full h-full py-10 overflow-auto">
     {/* log form */}
     {logFoodEntryIsOpen ? 
       <LogForm 
@@ -105,6 +107,7 @@ function Log ({foodLogEntry, setFoodLogEntry, nutritionInfo, setNutritionInfo} :
           </svg>
         </div>
       </div>
+      <Legend />
     </div>
     </>
   )

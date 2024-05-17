@@ -13,7 +13,7 @@ function Grid() {
 
 
   return (
-    <div className="myGrid">
+    <div className="overflow-auto myGrid">
 
       <div id="div1" className="block2x2">
         <div className="inside">div 1</div>
