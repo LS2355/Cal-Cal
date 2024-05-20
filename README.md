@@ -105,11 +105,8 @@ function apple(){
 ![Windows](https://custom-icon-badges.demolab.com/badge/-Windows-white?style=for-the-badge&logoColor=%230078D6&logo=windows)
 ![vs code](https://custom-icon-badges.demolab.com/badge/-VS_CODE-black?style=for-the-badge&logoColor=%23007ACC&logo=visual-studio-code)
 <details><summary>Notes to self (just ignore this)</summary>
-look at the rollup documentation so that i can properly configure the webpack. 
-the main issue is that images are not appearing
-also see if i can get the server to run using github actions as well
-
-then run build again
-
-
+  problems
+  -reduce grid coloums the three for mobile version
+  -add progress bars
+  -get persentage from consumed cal/maintenance cal
 </details>
