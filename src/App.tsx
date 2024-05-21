@@ -7,6 +7,7 @@ import Log from './components/Log';
 import Customize from './components/Customize';
 import Settings from './components/Settings';
 import './assets/sass/app.scss';
+import { healthInfoINTR } from './components/subcomponts/interfaces';
 
 // import 'gridstack/dist/gridstack.css'
 
@@ -38,9 +39,9 @@ function App() {
         "fat": 0.3,
         "carbs": 28,
         "protine": 0.2,
-        "serving size": 1,
-        "serving type": "cup",
-        "amount of servings": 1,
+        "serving_size": 1,
+        "serving_type": "cup",
+        "servings": 1,
       }
     ],
     dinner:[
@@ -51,9 +52,9 @@ function App() {
         "fat": 0.3,
         "carbs": 25,
         "protine": 0.5,
-        "serving size": 1,
-        "serving type": "medium apple",
-        "amount of servings": 1,
+        "serving_size": 1,
+        "serving_type": "medium apple",
+        "servings": 1,
       },
       {
         "type": "item",
@@ -62,9 +63,9 @@ function App() {
         "fat": 4.1,
         "carbs": 10,
         "protine": 1.1,
-        "serving size": 5,
-        "serving type": "crackers",
-        "amount of servings": 1
+        "serving_size": 5,
+        "serving_type": "crackers",
+        "servings": 1
       }
     ], 
     snacks:[
@@ -75,16 +76,24 @@ function App() {
         "fat": 11,
         "carbs": 28,
         "protine": 3,
-        "serving size": 1.56,
-        "serving type": "oz",
-        "amount of servings": 1 ,
+        "serving_size": 1.56,
+        "serving_type": "oz",
+        "servings": 1 ,
       }
     ]
   })
 
 
   const [nutritionInfo, setNutritionInfo] = useState(()=>GetNutritionInfo(foodLogEntry))
-
+  const [healthInfo, setHealthInfo] = useState<healthInfoINTR>({
+    weight: 180,
+    height: {
+      ft: 5,
+      in: 10
+    },
+    activity_level: "medium",
+    maintenance_calories: 1800
+  })
 
 
 
@@ -115,7 +124,10 @@ function App() {
               <Settings />
             }/>
             <Route path='/Customize' element = {
-              <Customize />
+              <Customize 
+              healthInfo = {healthInfo}
+              setHealthInfo = {setHealthInfo}
+              />
             }/>
           </Routes>
       </div>

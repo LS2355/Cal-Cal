@@ -22,3 +22,61 @@
 .servings-color{
   fill: $servings;
 }
+
+
+
+
+.calories-mark{
+  width: 8px;
+  height: 8px;
+  border-width:1px;
+  border-radius: 100%;
+  border-color: $calories;
+  align-self: center;
+  padding: auto;
+}
+.protine-mark{
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border-color: $protine;
+  content: "";
+}
+.fat-mark{
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border-color: $fat;
+  content: "";
+}
+.carbs-mark{
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border-color: $carbs;
+  content: "";
+}
+.serving-size-mark{
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border-color: $serving-size;
+  content: "";
+}
+.serving-type-mark{
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border-color: $serving-type;
+  content: "";
+}
+.servings-mark{
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border-color: $servings;
+  content: "";
+}
+
+
+

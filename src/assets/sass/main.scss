@@ -30,6 +30,10 @@
   }
 }
 
+::placeholder{
+  color: white;
+  opacity: .7;
+}
 
 
 
@@ -38,4 +42,5 @@
 @import './settings.scss';
 @import './log.scss';
 @import './logForm.scss';
-@import './progressbars.scss'
+@import './progressbars.scss';
+@import './customize.scss';

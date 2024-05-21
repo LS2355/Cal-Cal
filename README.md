@@ -109,4 +109,8 @@ function apple(){
   -reduce grid coloums the three for mobile version
   -add progress bars
   -get persentage from consumed cal/maintenance cal
+  -log add the preset options
+  -log add the ability to view meals
+  -log add the ability to choose quick add or add item/ meal
+  
 </details>

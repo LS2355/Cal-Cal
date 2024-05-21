@@ -34,3 +34,13 @@ export interface FoodEntryMeal {
   serving_type: string;
   servings: number;
 }
+
+export interface healthInfoINTR {
+  weight: number;
+  height: {
+    ft: number;
+    in: number;
+  }
+  activity_level: string;
+  maintenance_calories: number;
+}

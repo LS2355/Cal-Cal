@@ -21,15 +21,15 @@ function Log ({foodLogEntry, setFoodLogEntry, nutritionInfo, setNutritionInfo} :
       const {type, name, calories, fat, carbs, protine, serving_size, serving_type, servings} = entryObj
 
       return(
-          <div className="flex w-full py-2 border-y" key={index}>
-            <div className="text-center w-[24.5%]">{name}</div>
-            <div className="text-center w-[12.5%]">{calories}</div>
-            <div className="text-center w-[12.5%]">{protine}</div>
-            <div className="text-center w-[12.5%]">{fat}</div>
-            <div className="text-center w-[12.5%]">{carbs}</div>
-            <div className="text-center w-[12.5%]">{serving_size}</div>
-            <div className="text-center w-[12.5%]">{serving_type}</div>
-            <div className="text-center w-[12.5%]">{servings}</div>
+          <div className="flex w-full py-2 border-y log-entry" key={index}>
+            <div className="text-center self-center w-[18.75%]">{name}</div>
+            <div className="text-center self-center w-[11.6%]">{calories}</div>
+            <div className="text-center self-center w-[11.6%]">{protine}</div>
+            <div className="text-center self-center w-[11.6%]">{fat}</div>
+            <div className="text-center self-center w-[11.6%]">{carbs}</div>
+            <div className="text-center self-center w-[11.6%]">{serving_size}</div>
+            <div className="text-center self-center w-[11.6%]">{serving_type}</div>
+            <div className="text-center self-center w-[11.6%]">{servings}</div>
           </div>)
     })
       // if (meal == "breakfast") totalBreakfastCalories.current = totalCalories
@@ -71,8 +71,23 @@ function Log ({foodLogEntry, setFoodLogEntry, nutritionInfo, setNutritionInfo} :
       {TimeStamp().full}
       </div>
 
+
       <div className="w-5/6 flex flex-wrap justify-between min-w-[500px] log">
-        <div className="w-full p-3 font-semibold tracking-wide">Breakfast <span className="float-right font-semibold tracking-wider">{nutritionInfo.breakfast.calories}</span></div>
+        <div className="flex flex-wrap w-full text-sm tracking-wide">
+          <div className="text-center w-[18.75%] self-center font-semibold">meal</div>
+          <div className="text-center w-[11.6%] self-center">Cal</div>
+          <div className="text-center w-[11.6%] self-center">Protine</div>
+          <div className="text-center w-[11.6%] self-center">Fat</div>
+          <div className="text-center w-[11.6%] self-center">Carbs</div>
+          <div className="text-center w-[11.6%] self-center">Serving size</div>
+          <div className="text-center w-[11.6%] self-center">Serving Type</div>
+          <div className="text-center w-[11.6%] self-center">Servings</div>
+        </div>
+      </div>
+
+
+      <div className="w-5/6 flex flex-wrap justify-between min-w-[500px] log">
+        <div className="w-full p-3 font-semibold tracking-wide">breakfast<span className="float-right font-semibold tracking-wider">{nutritionInfo.breakfast.calories}</span></div>
         {BuildLogs("breakfast")}
         <div className="grid w-full p-2 place-content-center log-add-entry" onClick={()=>{setLogFoodEntryIsOpen(!logFoodEntryIsOpen); setSelectedMeal('breakfast')}}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24">

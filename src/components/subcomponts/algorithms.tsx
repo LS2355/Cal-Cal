@@ -61,12 +61,12 @@ return {
   dinner: DinnerObj,
   snacks: SnacksObj
 }
-
-
-
-
 }
 
+function GetPersentage(divisor :number, dividend :number){
+  const persentage = `${(divisor/dividend)*100}%`
+  return persentage
+} 
 
 
 
