@@ -112,5 +112,6 @@ function apple(){
   -log add the preset options
   -log add the ability to view meals
   -log add the ability to choose quick add or add item/ meal
-  
+  -log add algorithms for calculating maintenance
+  -log get base activity level cal nums
 </details>
