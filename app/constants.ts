@@ -1,5 +1,8 @@
+import Constants from "expo-constants";
 import { Dimensions } from "react-native";
 
-export const { height: ScreenHeight, width: ScreenWidth } =
-  Dimensions.get("screen");
-export const ItemHeight = 80;
+const StatusBarHeight = Constants.statusBarHeight
+const { height: ScreenHeight, width: ScreenWidth } = Dimensions.get("screen");
+const ItemHeight = 80;
+
+export {StatusBarHeight, ScreenHeight, ScreenWidth, ItemHeight}
