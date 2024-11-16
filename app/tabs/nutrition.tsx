@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
 
 
 
-
+// repo baseing the grid off of: https://github.com/SHISME/react-native-draggable-grid
 
 
 
