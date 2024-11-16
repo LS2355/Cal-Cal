@@ -9,7 +9,9 @@ import { data } from "./data";
 import { Item } from "./tabs/item";
 import PagerView from "react-native-pager-view";
 import FocusPage from "./tabs/focus";
+import NutritionPage from "./tabs/nutrition";
 import PullDownTab from "@/modules/pullDownTab";
+
 import { indexPageStyling } from "./styles/styles";
 
 const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList);
@@ -79,7 +81,7 @@ export default function index () {
         <View key={1}>
           <FocusPage tabDownHeight={tabDownHeight}/>
         </View>
-        <View key={2}><Text>Nutrition</Text></View>
+        <View key={2}><NutritionPage/></View>
       </PagerView>
     </View>
 

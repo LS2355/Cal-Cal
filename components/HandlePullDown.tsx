@@ -20,7 +20,7 @@ export function FocusPagePullDown (event: any, tabDownHeight: any){
   console.log('tab', tabDownHeight)
   if(tabDownHeight.value > 0){tabDownHeight.value = withSpring(0)}
   else if (HandlePullDown(event.nativeEvent.contentOffset.y)){
-    Vibration.vibrate(100)    
+    Vibration.vibrate(50)    
     tabDownHeight.value = withSpring(210 + StatusBarHeight )
   }
 }
