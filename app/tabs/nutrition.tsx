@@ -1,14 +1,108 @@
+// https://github.com/SHISME/react-native-draggable-grid/issues/84
 
 
-
-
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
   Text,
+  ScrollView
 } from 'react-native';
 import { DraggableGrid } from 'react-native-draggable-grid';
+
+interface MyTestProps {
+
+}
+
+interface MyTestState {
+  data:{key:string, name:string}[];
+}
+
+export class NutritionPage extends React.Component<MyTestProps, MyTestState>{
+
+  constructor(props:MyTestProps) {
+    super(props);
+    this.state = {
+      data:[
+        {name:'1',key:'one'},
+        {name:'2',key:'two'},
+        {name:'3',key:'three'},
+        {name:'4',key:'four'},
+        {name:'5',key:'five'},
+        {name:'6',key:'six'},
+        {name:'7',key:'seven'},
+        {name:'8',key:'eight'},
+        {name:'9',key:'night'},
+        {name:'0',key:'zero'},
+        {name:'11',key:'1one'},
+        {name:'12',key:'1two'},
+        {name:'13',key:'1three'},
+        {name:'14',key:'1four'},
+        {name:'15',key:'1five'},
+        {name:'16',key:'1six'},
+        {name:'17',key:'1seven'},
+        {name:'18',key:'1eight'},
+        {name:'19',key:'1night'},
+      ],
+    };
+    
+  }
+
+  public render_item(item:{name:string, key:string}) {
+    return (
+      <View
+        style={styles.item}
+        key={item.key}
+      >
+        <Text style={styles.item_text}>{item.name}</Text>
+      </View>
+    );
+  }
+
+  render() {
+    return (
+
+      <ScrollView contentContainerStyle={styles.wrapper} scrollEnabled={}>
+        <DraggableGrid
+          numColumns={2}
+          renderItem={this.render_item}
+          data={this.state.data}
+          onDragRelease={(data) => {
+            this.setState({data});// need reset the props data sort after drag release
+          }}
+        />
+      </ScrollView>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  button:{
+    width:150,
+    height:100,
+    backgroundColor:'blue',
+  },
+  wrapper:{
+    paddingTop:100,
+    width:'100%',
+    height:'100%',
+    justifyContent:'center',
+  },
+  item:{
+    width:100,
+    height:100,
+    borderRadius:8,
+    backgroundColor:'red',
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  item_text:{
+    fontSize:40,
+    color:'#FFFFFF',
+  },
+});
+
+
 
 // interface MyTestProps {
 
@@ -72,42 +166,6 @@ import { DraggableGrid } from 'react-native-draggable-grid';
 
 
 
-interface MyTestProps {}
-interface MyTestState {
-  data: {key: string, name: string}[];
-}
-
-const NutritionPage = (props) => {
-  const [data, setData] = useState<any>([
-
-    {name:'1',key:'one'},
-    {name:'2',key:'two'},
-    {name:'3',key:'three'},
-    {name:'4',key:'four'},
-    {name:'5',key:'five'},
-    {name:'6',key:'six'},
-    {name:'7',key:'seven'},
-    {name:'8',key:'eight'},
-    {name:'9',key:'night'},
-    {name:'0',key:'zero'},
-  ])
-  function RenderItem (item:{name:string, key:string}) {
-    return(
-    <View style={styles.item} key={item.key}>
-      <Text style={styles.item_text}>{item.name}</Text>
-    </View>      
-    )
-  }
-  return (
-    <View style={styles.wrapper}>
-      <DraggableGrid
-      numColumns={4}
-      renderItem={RenderItem}
-      data={data}
-      onDragging={(data)=>setData({data})}/>
-    </View>
-  )
-}
 
 
 
@@ -118,39 +176,6 @@ const NutritionPage = (props) => {
 
 
 
-
-
-
-
-
-
-
-
-const styles = StyleSheet.create({
-  button:{
-    width:150,
-    height:100,
-    backgroundColor:'blue',
-  },
-  wrapper:{
-    paddingTop:100,
-    width:'100%',
-    height:'100%',
-    justifyContent:'center',
-  },
-  item:{
-    width:100,
-    height:100,
-    borderRadius:8,
-    backgroundColor:'red',
-    justifyContent:'center',
-    alignItems:'center',
-  },
-  item_text:{
-    fontSize:40,
-    color:'#FFFFFF',
-  },
-});
 
 
 
