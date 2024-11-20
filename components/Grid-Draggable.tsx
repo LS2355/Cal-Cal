@@ -283,7 +283,7 @@ export const DraggableGrid = function<DataType extends IBaseItemType>(
         top: items[itemIndex].currentPosition.getLayout().top,
         left: I18nManager.isRTL && Platform.OS === 'web' ? undefined: items[itemIndex].currentPosition.getLayout().left,
         right: I18nManager.isRTL && Platform.OS === 'web' ? items[itemIndex].currentPosition.getLayout().left : undefined,
-},
+      },
     ]
   }
   function getDragStartAnimation(itemIndex: number) {

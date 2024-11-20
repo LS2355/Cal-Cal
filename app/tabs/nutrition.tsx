@@ -1,7 +1,7 @@
 // https://github.com/SHISME/react-native-draggable-grid/issues/84
 
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -18,11 +18,8 @@ interface MyTestState {
   data:{key:string, name:string}[];
 }
 
-export class NutritionPage extends React.Component<MyTestProps, MyTestState>{
-
-  constructor(props:MyTestProps) {
-    super(props);
-    this.state = {
+export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
+    const [BlockData, setBlockData] = useState({
       data:[
         {name:'1',key:'one'},
         {name:'2',key:'two'},
@@ -44,11 +41,11 @@ export class NutritionPage extends React.Component<MyTestProps, MyTestState>{
         {name:'18',key:'1eight'},
         {name:'19',key:'1night'},
       ],
-    };
+    })
     
-  }
 
-  public render_item(item:{name:string, key:string}) {
+  function render_item(item:{name:string, key:string}) {
+    console.log('render_item function: item', item)
     return (
       <View
         style={styles.item}
@@ -59,21 +56,23 @@ export class NutritionPage extends React.Component<MyTestProps, MyTestState>{
     );
   }
 
-  render() {
+
+
+// make it so that when editing the screen i cant go over or under the content offset value or under
+//also make it so that i cant swipe to a diffrent page when editing menu
     return (
 
-      <ScrollView contentContainerStyle={styles.wrapper} scrollEnabled={}>
+      <ScrollView contentContainerStyle={styles.wrapper}>
         <DraggableGrid
           numColumns={2}
-          renderItem={this.render_item}
-          data={this.state.data}
+          renderItem={render_item}
+          data={BlockData.data}
           onDragRelease={(data) => {
-            this.setState({data});// need reset the props data sort after drag release
+            setBlockData({data});// need reset the props data sort after drag release
           }}
         />
       </ScrollView>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -85,12 +84,11 @@ const styles = StyleSheet.create({
   wrapper:{
     paddingTop:100,
     width:'100%',
-    height:'100%',
     justifyContent:'center',
   },
   item:{
-    width:100,
-    height:100,
+    width:200,
+    height:200,
     borderRadius:8,
     backgroundColor:'red',
     justifyContent:'center',
@@ -103,229 +101,6 @@ const styles = StyleSheet.create({
 });
 
 
-
-// interface MyTestProps {
-
-// }
-
-// interface MyTestState {
-//   data:{key:string, name:string}[];
-// }
-
-// export default class NutritionPage extends React.Component<MyTestProps, MyTestState>{
-
-//   constructor(props:MyTestProps) {
-//     super(props);
-//     this.state = {
-//       data:[
-//         {name:'1',key:'one'},
-//         {name:'2',key:'two'},
-//         {name:'3',key:'three'},
-//         {name:'4',key:'four'},
-//         {name:'5',key:'five'},
-//         {name:'6',key:'six'},
-//         {name:'7',key:'seven'},
-//         {name:'8',key:'eight'},
-//         {name:'9',key:'night'},
-//         {name:'0',key:'zero'},
-//       ],
-//     };
-//   }
-
-//   public render_item(item:{name:string, key:string}) {
-//     return (
-//       <View
-//         style={styles.item}
-//         key={item.key}
-//       >
-//         <Text style={styles.item_text}>{item.name}</Text>
-//       </View>
-//     );
-//   }
-
-//   render() {
-//     return (
-//       <View style={styles.wrapper}>
-//         <DraggableGrid
-//           numColumns={4}
-//           renderItem={this.render_item}
-//           data={this.state.data}
-//           onDragRelease={(data) => {
-//             this.setState({data});// need reset the props data sort after drag release
-//           }}
-//         />
-//       </View>
-//     );
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// repo baseing the grid off of: https://github.com/SHISME/react-native-draggable-grid
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { Text, View, Animated, PanResponder, StyleSheet} from "react-native";
-// import {useState} from 'react'
-// import {DraggableGrid} from 'react-native-draggable-grid'
-
-// interface MyTestProps {}
-// interface MyTestState {
-//   data: {key: string, name: string}[];
-// }
-
-// export default function NutritionPage () {
-//   const [data, setData] = useState<any>([
-//     {name:'1',key:'one'},
-//     {name:'2',key:'two'},
-//     {name:'3',key:'three'},
-//     {name:'4',key:'four'},
-//     {name:'5',key:'five'},
-//     {name:'6',key:'six'},
-//     {name:'7',key:'seven'},
-//     {name:'8',key:'eight'},
-//     {name:'9',key:'night'},
-//     {name:'0',key:'zero'},
-//   ])
-//   function RenderItem (item:{name:string, key:string}) {
-//     return(
-//     <View style={styles.item} key={item.key}>
-//       <Text style={styles.item_text}>{item.name}</Text>
-//     </View>      
-//     )
-//   }
-//   return (
-//     <View style={styles.wrapper}>
-//       <DraggableGrid
-//       numColumns={4}
-//       renderItem={RenderItem}
-//       data={data}
-//       onDragging={(madata)=>setData({madata})}/>
-//     </View>
-//   )
-// }
-
-
-
-
-// const styles = StyleSheet.create({
-//   button:{
-//     width:150,
-//     height:100,
-//     backgroundColor:'blue',
-//   },
-//   wrapper:{
-//     paddingTop:100,
-//     width:'100%',
-//     height:'100%',
-//     justifyContent:'center',
-//   },
-//   item:{
-//     width:100,
-//     height:100,
-//     borderRadius:8,
-//     backgroundColor:'red',
-//     justifyContent:'center',
-//     alignItems:'center',
-//   },
-//   item_text:{
-//     fontSize:40,
-//     color:'#FFFFFF',
-//   },
-// });
-
-
-
-
-//drag and drop test
-
-// const DraggableComponent = () =>{
-//   const [pan, setPan] = useState(new Animated.ValueXY());
-
-// const PanResponda = PanResponder.create({
-//   onStartShouldSetPanResponder: () => true,
-//   onPanResponderGrant: () => {
-//     pan.setOffset({
-//       x: pan.x._value,
-//       y: pan.y._value
-//     });
-//     pan.setValue({x: 0, y: 0})
-//   },
-//   onPanResponderMove: Animated.event(
-//     [null, {dx: pan.x, dy: pan.y}],
-//     {useNativeDriver: false}
-//   ),
-//   onPanResponderRelease: ()=>pan.flattenOffset
-
-// })
-// return(
-//   <Animated.View style={[pan.getLayout(), styles.draggable]} {...PanResponda.panHandlers}>
-//   </Animated.View>
-// )
-// }
-
-
-// export default function NutritionPage () {
-//   return (
-//     <View style={styles.container}>
-//       {/* Other components */}
-//       <DraggableComponent />
-//       {/* Other components */}
-//     </View>
-//   );
- 
-// }
-
-
-
-// const styles = {
-
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center'
-//   },
-//   draggable: {
-//     width: 100,
-//     height: 100,
-//     backgroundColor: 'blue',
-//   },
-// };
 
 
 export default NutritionPage
