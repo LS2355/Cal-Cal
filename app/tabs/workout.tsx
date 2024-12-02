@@ -14,7 +14,7 @@ const getItemLayout = (_: any, index: number) => (
   { length: ItemHeight, offset: ItemHeight * index, index }
 )
 
-export default function WorkoutPage ({insets}) {
+export default function WorkoutPage ({insets}: any) {
   const scrollOffset = useSharedValue(0);
   const ref = useRef<FlatList>(null);
   const maxScrollOffset = useDerivedValue(() =>
@@ -26,12 +26,7 @@ export default function WorkoutPage ({insets}) {
       scrollOffset.value = event.contentOffset.y;
     },
   });
-
-
-
-
-
-
+  
   const renderItem = useCallback(({ item, index }: any) => {
     return (
       <Item

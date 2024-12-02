@@ -1,6 +1,6 @@
 //rework this to fit my usecase
 
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import {View} from "react-native";
 import {useSharedValue} from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -21,19 +21,11 @@ export default function index () {
   const PagerViewRef = useRef(null)
   const insets = useSafeAreaInsets();
   const tabDownHeight = useSharedValue(0)
+  const [scrollIsEnabled, setScrollIsEnabled]= useState(true)
 
 
-  function HandleDragStartOnGrid () {
-    if (PagerViewRef.current) {PagerViewRef.current.setNativeProps({scrollEnabled:false});
-    }
-  }
-  function HandleDragEndOnGrid () {
-    if (PagerViewRef.current) {PagerViewRef.current.setNativeProps({scrollEnabled:true});
-    }
-  }
-
-
-
+  function HandleDragStartOnGrid () {setScrollIsEnabled(false)}
+  function HandleDragEndOnGrid () {setScrollIsEnabled(true)}
 
   return (  
     <View style={{...indexPageStyling.appContainer}}>
@@ -42,7 +34,8 @@ export default function index () {
       ref={PagerViewRef}
       style={{...indexPageStyling.pagerView, marginTop: insets.top}} 
       initialPage={1} 
-      onPageScroll={(e)=>{console.log('scrolled')}}
+      scrollEnabled={scrollIsEnabled}
+      
       >
         <View key={0}>      
           <WorkoutPage insets={insets}/>  

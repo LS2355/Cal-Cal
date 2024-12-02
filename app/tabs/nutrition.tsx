@@ -67,9 +67,12 @@ export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
           numColumns={2}
           renderItem={render_item}
           data={BlockData.data}
+          onDragStart={HandleDragStartOnGrid}
           onDragRelease={(data) => {
             setBlockData({data});// need reset the props data sort after drag release
+            HandleDragEndOnGrid()
           }}
+          
         />
       </ScrollView>
     );
