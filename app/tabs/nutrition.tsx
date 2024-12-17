@@ -8,7 +8,7 @@ import {
   Text,
   ScrollView
 } from 'react-native';
-import { DraggableGrid } from 'react-native-draggable-grid';
+import { DraggableGrid } from '../../components/draggable-gridls';
 
 interface MyTestProps {
 
@@ -21,12 +21,12 @@ interface MyTestState {
 export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
     const [BlockData, setBlockData] = useState({
       data:[
-        {name:'1',key:'one'},
+        {name:'1',key:'one', size:'full'},
         {name:'2',key:'two'},
         {name:'3',key:'three'},
         {name:'4',key:'four'},
         {name:'5',key:'five'},
-        {name:'6',key:'six'},
+        {name:'6',key:'six', size:'full'},
         {name:'7',key:'seven'},
         {name:'8',key:'eight'},
         {name:'9',key:'night'},
@@ -43,9 +43,18 @@ export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
       ],
     })
     
-
+  //content inside block
   function render_item(item:{name:string, key:string}) {
     console.log('render_item function: item', item)
+    if (item.size == 'full'){return(
+      <View
+        style={styles.itemx2}
+        key={item.key}
+      >
+        <Text style={styles.item_text}>{item.name}</Text>
+      </View>)
+    }
+    else{
     return (
       <View
         style={styles.item}
@@ -53,7 +62,7 @@ export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
       >
         <Text style={styles.item_text}>{item.name}</Text>
       </View>
-    );
+    );}
   }
 
 
@@ -96,6 +105,15 @@ const styles = StyleSheet.create({
     backgroundColor:'red',
     justifyContent:'center',
     alignItems:'center',
+  },
+  itemx2:{
+    width:400,
+    height: 200,
+    borderRadius: 8,
+    backgroundColor: 'blue',
+    opacity:.7,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   item_text:{
     fontSize:40,

@@ -11,6 +11,7 @@ import PullDownTab from "@/modules/pullDownTab";
 
 import { indexPageStyling } from "./styles/styles";
 import WorkoutPage from "./tabs/workout";
+import NutritionPageTest from "./tabs/nutrition-test";
 
 
 
@@ -44,10 +45,10 @@ export default function index () {
           <FocusPage tabDownHeight={tabDownHeight}/>
         </View>
         <View key={2}>
-          <NutritionPage 
-          HandleDragStartOnGrid={HandleDragStartOnGrid}
-          HandleDragEndOnGrid={HandleDragEndOnGrid}
-          />
+          <NutritionPageTest />
+          {/*HandleDragStartOnGrid={HandleDragStartOnGrid}*/}
+          {/*HandleDragEndOnGrid={HandleDragEndOnGrid}*/}
+          
         </View>
       </PagerView>
     </View>

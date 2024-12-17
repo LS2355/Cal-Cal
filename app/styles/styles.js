@@ -5,9 +5,6 @@ import {ScreenWidth, ScreenHeight, StatusBarHeight} from '../constants'
 
 import Constants from 'expo-constants'
 const he = Constants.statusBarHeight
-console.log('he',he)
-
-
 
 
 const indexPageStyling = StyleSheet.create({

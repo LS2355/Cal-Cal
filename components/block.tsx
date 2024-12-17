@@ -10,7 +10,6 @@ import {
 } from 'react-native'
 import { FunctionComponent } from 'react'
 
-// types
 interface BlockProps {
   style?: StyleProp<any>
   dragStartAnimationStyle: StyleProp<any>
@@ -21,7 +20,7 @@ interface BlockProps {
   children?:React.ReactNode
 }
 
-export const Block : FunctionComponent<BlockProps> = ({
+export const Block: FunctionComponent<BlockProps> = ({
   style,
   dragStartAnimationStyle,
   onPress,
@@ -29,19 +28,17 @@ export const Block : FunctionComponent<BlockProps> = ({
   children,
   panHandlers,
   delayLongPress
-})=>{
-  return ( 
+}) => {
+  return (
     <Animated.View style={[styles.blockContainer, style, dragStartAnimationStyle]} {...panHandlers}>
-      <Animated.View>
+
         <TouchableWithoutFeedback delayLongPress={delayLongPress} onPress={onPress} onLongPress={onLongPress}>
           {children}
         </TouchableWithoutFeedback>
-      </Animated.View>
+
     </Animated.View>
   )
 }
-
-
 
 const styles = StyleSheet.create({
   blockContainer: {
