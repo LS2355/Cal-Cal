@@ -6,9 +6,11 @@ import {
   View,
   StyleSheet,
   Text,
-  ScrollView
+  ScrollView,
+  Button
 } from 'react-native';
 import { DraggableGrid } from '../../components/draggable-gridls';
+import DragGrid from '@/components/rewrite';
 
 interface MyTestProps {
 
@@ -19,6 +21,7 @@ interface MyTestState {
 }
 
 export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
+  const [testMode, setTestMode] = useState(true)
     const [BlockData, setBlockData] = useState({
       data:[
         {name:'1',key:'one', size:'full'},
@@ -72,6 +75,13 @@ export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
     return (
 
       <ScrollView contentContainerStyle={styles.wrapper}>
+        <Button
+        onPress={()=>setTestMode((prev)=>!prev)}
+        title='toggleTest'
+        color='#fff'/>
+        
+        
+        {testMode ? <DragGrid/> :
         <DraggableGrid
           numColumns={2}
           renderItem={render_item}
@@ -79,10 +89,13 @@ export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
           onDragStart={HandleDragStartOnGrid}
           onDragRelease={(data) => {
             setBlockData({data});// need reset the props data sort after drag release
-            HandleDragEndOnGrid()
+            
           }}
           
-        />
+        />}
+        {/* <DragGrid></DragGrid> */}
+
+
       </ScrollView>
     );
 }

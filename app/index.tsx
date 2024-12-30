@@ -12,6 +12,7 @@ import PullDownTab from "@/modules/pullDownTab";
 import { indexPageStyling } from "./styles/styles";
 import WorkoutPage from "./tabs/workout";
 import NutritionPageTest from "./tabs/nutrition-test";
+import NewGridTest from "@/components/working grid/NewGridTest";
 
 
 
@@ -45,7 +46,9 @@ export default function index () {
           <FocusPage tabDownHeight={tabDownHeight}/>
         </View>
         <View key={2}>
-          <NutritionPageTest />
+          {/* <NewGridTest /> */}
+          {/* <NutritionPageTest /> */}
+          <NutritionPage />
           {/*HandleDragStartOnGrid={HandleDragStartOnGrid}*/}
           {/*HandleDragEndOnGrid={HandleDragEndOnGrid}*/}
           

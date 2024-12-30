@@ -70,11 +70,20 @@ const pullDownTabStyling = StyleSheet.create({
   }
 })
 
+const dragGridStyling = StyleSheet.create({
+  grid:{
+    flex:1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  }
+})
+
 
 export {
   indexPageStyling,
   focusPageStyling, 
   nutritionPageStyling, 
   workoutPageStyling, 
-  pullDownTabStyling
+  pullDownTabStyling,
+  dragGridStyling
 }

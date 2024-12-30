@@ -14,7 +14,7 @@ export function NutritionPageTest (){
     
 
 // make it so that when editing the screen i cant go over or under the content offset value or under
-//also make it so that i cant swipe to a diffrent page when editing menu
+// also make it so that i cant swipe to a diffrent page when editing menu
     return (
 
       <ScrollView contentContainerStyle={styles.wrapper}>

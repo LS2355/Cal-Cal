@@ -7,13 +7,18 @@ import {
   StyleSheet,
   Text,
   ScrollView,
-	Button
+	Button,
+	PanResponder,
+	PanResponderGestureState,
+	GestureResponderEvent,
+	I18nManager
 } from 'react-native';
 import {getEquippedBlockData, updateEquippedBlockData} from './Blocks/BlockDataMangement';
-import { addBlock, removeBlock, moveBlock, ImportsForEquippedBlocks, buildEquippedBlocks} from './GridHandles/BlockManagment';
+import { addBlock, removeBlock, moveBlock, ImportsForEquippedBlocks, buildEquippedBlocks, generateBlockPositions} from './GridHandles/BlockManagment';
 import { BlockPostionCords } from './interfaces';
 import LoadingScreen from './loadingScreen';
-
+import Block from './Blocks/BlockTypes/Block';
+import BlockXL from './Blocks/BlockTypes/BlockXL';
 function DragGrid () {
 	//states
 	const [loading, setLoading] = useState(true)
@@ -22,11 +27,14 @@ function DragGrid () {
   const [equippedBlockElements, setEquippedBlockElements] = useState<any>()	
 	const blockPosition = useRef<BlockPostionCords[]>([])
 	const [positionsIsReady, setPositionIsReady] = useState<boolean>(false)
+	const [panResponderCapture, setPanResponderCapture] = useState<boolean>(false)
+	const [activeItemIndex, setActiveItemIndex] = useState<number | undefined>(1)
 	//refs
 	const blockElementsFunctionsRefMap = useRef<any>({}) //key is function name //value is its function
 	const blockElementsSizeType = useRef<object[]>([])
 	//other variables
   let heightOfGrid = 800  
+	let offsetForActiveBlock = {x:0, y:0}
 
 	const fetchBlockData = async () =>{
 		const result = await getEquippedBlockData()
@@ -38,113 +46,116 @@ function DragGrid () {
 	//defaultBlock
 	const defaultBlockWidth = ScreenWidth / 2
 	const defaultBlockHeight = defaultBlockWidth
-	//XLBlock
+	// XLBlock
 	const XLBlockWidth = ScreenWidth
 	//objects of states used to pass to functions
 	const ObjOfCommonStates = {blockElements, equippedBlockElements, setEquippedBlockElements}
 	const ObjForMoveBlockStates = {blockElementsFunctionsRefMap, equippedBlockElements, blockPosition, setBlockElements}
 	const ObjForImportsForEquippedBlocksStates = {equippedBlockElements, blockElementsFunctionsRefMap }
 	const ObjForBuildEquippedBlocksStates = {blockElementsFunctionsRefMap,setBlockElements, blockPosition ,positionsIsReady}
+	const ObjForGeneratingBlockPostions = {blockElements, defaultBlockWidth, blockPosition, setPositionIsReady }
 	// we will only rerender block position state when the block is release
 	
+	function buildEquippedBlocks( {blockElementsFunctionsRefMap,setBlockElements, blockPosition, positionsIsReady}:{
+		blockElementsFunctionsRefMap: React.MutableRefObject<any>;
+		setBlockElements: React.Dispatch<any>;
+		blockPosition: React.MutableRefObject<BlockPostionCords[]>;
+		positionsIsReady: boolean;
+	}) {
+		const refValues = Object.values(blockElementsFunctionsRefMap.current)
+		const	blockElementsArray = refValues.map((blockElementObj: any, index : number)=> {
+				const {BlockName, BlockType, BlockData}= blockElementObj.default;
+				console.log('blockDADS', blockElementObj.default)
+				console.log('Block',blockElementObj.default.BlockData())
+			if(BlockType){
+				if(BlockType == 'default'){
+				return ( 
+						<Block
+						onPress={()=>onBlockPress}
+						onLongPress={()=>setActiveBlock(index)}
+						panHandlers={PanResponder.panHandlers}
+						style={{color:'blue'}}
+						key={BlockName}>
+							<BlockData/>
+						</Block>
+					)
+				}
+				else if (BlockType == 'full'){
+					
+					return(
+						<BlockXL
+							onPress={()=>onBlockPress}
+							onLongPress={()=>setActiveBlock(index)}
+							panHandlers={PanResponder.panHandlers}
+							style={{color:'blue'}}
+							key={BlockName}>
+							<BlockData/>
+						</BlockXL>
+						)
 	
-	//load block Data when component mounts
+				}
+				else{console.error('incorrect blockType. only options are "default" & "full"')}
+	
+			}else{console.error('missing blockType')}
+	
+			})
+		setBlockElements(blockElementsArray)
+	}
 
 
+function onBlockPress(itemIndex: number) {
+	console.log('press')
+	return true
+}
 
-
-
+function setActiveBlock (activeBlockIndex : number) { //look at this one again
+setPanResponderCapture(true)
+setActiveItemIndex(activeBlockIndex)
+}
 
 //going to need a funtion that updates the local storage when a value in EquippedBlockElements changes
 //this is going to be for the order of the array and the amount of calues in it
 
 
-function generateBlockPositions () {
-	const positions: any[] = []
-	console.log('blockELsss',blockElements)
-	blockElements.forEach((BlockElement: JSX.Element, index: number)=>{
-	  const type = BlockElement.type.name == 'BlockXL'? 'full' : 'default' 
-	  let xCord: number, yCord : number
-		const prevPosition = positions[index - 1] || null
-		//get x cordinate
-		if(!positions[0]){
-			xCord = 0
-		}
-		else {
-			if(prevPosition.x == defaultBlockWidth) xCord = 0
-			if(prevPosition.x == 0 && prevPosition.type == 'default' && type == 'default') xCord = defaultBlockWidth
-			if(prevPosition.x == 0 && prevPosition.type == 'full'){
-				if(type == 'default'){
-					//this statement checks if all the positions in the grid are filled
-					let idx: number = 1
-					while ( positions[index - idx]== 'full'){
-						idx += 1
-					}
-					//if the previous default width block has a width other than the screen is filled
-					if (positions[index-idx].xCord == 0) xCord = defaultBlockWidth
-					else{xCord = 0} 
-				}
-				else{
-					xCord = 0
-				} 
-			}	
-			if(prevPosition.type == 'full') xCord = 0 //with y cord make it a new line
-		}
-		
-		if (!positions[0]) yCord = 0
-		else if (prevPosition.x== 0){
-			if(prevPosition.type == 'full'){yCord = getNewYCord(index)} //get new height
-			else{yCord = prevPosition.y}
-		} 
-		else {
-			yCord = getNewYCord(index)
-		}
-		//get y cordinate
-			
-		//when setting up full height just check if the previous el was a full if it was set get the height of that el and set the offset amount
-	  positions.push({x:xCord, y:yCord, type: type})
-	 })
-	 console.log('positions arr ', positions)
-	function getNewYCord (idx: number) {
-	//get prev block height and add the prev position height for new height
-	const prevBlockHeight = blockElements[idx-1].props.style.height || defaultBlockWidth
-	const prevBlockYCord = positions[idx - 1].y
-	
-	const newYCord = prevBlockHeight + prevBlockYCord
-	return newYCord
-	}
+//Finger tracking
+						//look into panResponderCapture and where its used
+// const panResponder = PanResponder.create({
+// 	onStartShouldSetPanResponder: () => true,
+// 	onStartShouldSetPanResponderCapture: () => false,
+// 	onMoveShouldSetPanResponder: () => panResponderCapture,
+// 	onMoveShouldSetPanResponderCapture: () => panResponderCapture,
+// 	onShouldBlockNativeResponder: ()=> false,
+// 	onPanResponderTerminationRequest: ()=> false,
 
-	blockPosition.current= positions
-	setPositionIsReady(true)
-	//remember to set blockpositions = to positions 
-}
+// 	//how app responds
+// 	onPanResponderGrant: onStartDrag,
+// 	onPanResponderMove: onHandMove,
+// 	onPanResponderRelease: onHandRelease
+// })
 
+// function onStartDrag(_: GestureResponderEvent, gestureState: PanResponderGestureState) {
+// 	const activeItem = getActiveItem()
+// 	if (!activeItem) return false
+// 	const { x0, y0, moveX, moveY} = gestureState
+// 	const activeItemOrigin = blockPosition[activeItemIndex]
+// 	const x = activeItemOrigin.x + (I18nManager.isRTL ? x0: -x0)
+// 	const y = activeItemOrigin.y - y0
+// 	activeItem.
 
+// }
 
+// function onHandMove () {
 
+// }
 
+// function onHandRelease () {
 
+// }
 
-
-//other then that it will just be moved with an animation 
-
-
-
-
-	//every time equippedBlockElements changes run this function
-
-//what if i dont automaticly call the Blocks and instead just save them
-
-
-	//Dynamic imports for Equipped blocks
-
-	//create the block then import the module then add that to the state
-
-//  function ImportTheEquippedBlocks
-
-//rewrite
-
-
+// function getActiveItem () {
+// 	if (activeItemIndex === undefined) return false
+// 	return blockElements[activeItemIndex]
+// }
 
 
 function handleInitailization () {
@@ -245,7 +256,7 @@ function InitailBlockPositions () {
 	//whenever blockElements changes do this
 	useEffect(()=>{
 		getBlockElementSizes()
-		if(blockElements.length > 0){generateBlockPositions()}
+		if(blockElements.length > 0){generateBlockPositions(ObjForGeneratingBlockPostions)}
 		}, [blockElements])
 	//whenever equippedBlockElemnts changes do this
 	useEffect(()=>{

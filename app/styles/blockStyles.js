@@ -1,6 +1,6 @@
 import { Platform, StyleSheet } from "react-native";
 import {ScreenWidth} from '../constants'
-import {BlockColor} from '../userConfig'
+import {ConfigBlock} from '../userConfig'
 
 const defaultBlockStyles = {
   position: 'absolute',
@@ -22,10 +22,13 @@ const blocksStyles = StyleSheet.create({
   },
   defualtBlockChild: {
     flex:1,
-    padding: 8,
-    borderRadius: 16,
-    color: '#fff',
-    backgroundColor: BlockColor,
+    backgroundColor: ConfigBlock.BGColor,
+    color: ConfigBlock.TextColor,
+    padding: ConfigBlock.Padding,
+    borderRadius: ConfigBlock.BorderRadius,
+    borderColor: ConfigBlock.BorderColor,
+    borderWidth: ConfigBlock.BorderWidth
+
   }
 
 
