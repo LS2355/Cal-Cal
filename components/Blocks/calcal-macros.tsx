@@ -9,7 +9,7 @@ export default {
 
 function calcalMacros() {
   return(
-      <View style={{...blocksStyles.defualtBlockChild}}>
+      <View >
         <Text style={{color: 'white'}}>Macros</Text>
       </View>
   )

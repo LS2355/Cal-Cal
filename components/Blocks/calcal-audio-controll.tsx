@@ -6,13 +6,13 @@ export default {
   BlockName: 'calcal-audio-controll',
   BlockType: 'full',
   //if BlockType == full set the height
-  BlockHeight: 200,
+  BlockHeight: 300,
   BlockData: calcalAudioControll
 }
 
 function calcalAudioControll() {
   return(
-      <View style={{...blocksStyles.defualtBlockChild}}>
+      <View >
         <Text style={{color: 'white'}}>audio-controll</Text>
       </View>
   )

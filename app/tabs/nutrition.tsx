@@ -1,5 +1,5 @@
 // https://github.com/SHISME/react-native-draggable-grid/issues/84
-
+import Again from '@/modules/again';
 
 import React, { useState } from 'react';
 import {
@@ -9,7 +9,7 @@ import {
   ScrollView,
   Button
 } from 'react-native';
-import { DraggableGrid } from '../../components/draggable-gridls';
+// import { DraggableGrid } from '../../components/draggable-gridls';
 import DragGrid from '@/components/rewrite';
 
 interface MyTestProps {
@@ -74,8 +74,8 @@ export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
 //also make it so that i cant swipe to a diffrent page when editing menu
     return (
 
-      <ScrollView contentContainerStyle={styles.wrapper}>
-        <Button
+      <ScrollView contentContainerStyle={styles.wrapper} scrollEnabled={true}>
+        {/* <Button
         onPress={()=>setTestMode((prev)=>!prev)}
         title='toggleTest'
         color='#fff'/>
@@ -92,9 +92,9 @@ export function NutritionPage ({HandleDragStartOnGrid, HandleDragEndOnGrid}){
             
           }}
           
-        />}
+        />} */}
         {/* <DragGrid></DragGrid> */}
-
+        <Again/>
 
       </ScrollView>
     );
@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   },
   wrapper:{
     paddingTop:100,
+    flexGrow:1,
     width:'100%',
     justifyContent:'center',
   },

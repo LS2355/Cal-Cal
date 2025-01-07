@@ -10,7 +10,7 @@ export default {
 
 function calcalCaloriesConsumed() {
   return(
-      <View style={{...blocksStyles.defualtBlockChild}}>
+      <View >
         <Text style={{color: 'white'}}>Calories Consumed</Text>
       </View>
   )

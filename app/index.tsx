@@ -45,7 +45,7 @@ export default function index () {
         <View key={1}>
           <FocusPage tabDownHeight={tabDownHeight}/>
         </View>
-        <View key={2}>
+        <View key={2} style={{flex:1}}>
           {/* <NewGridTest /> */}
           {/* <NutritionPageTest /> */}
           <NutritionPage />

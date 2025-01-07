@@ -6,7 +6,7 @@ import {
   ScrollView
 } from 'react-native';
 import { DraggableGrid } from '../../components/draggable-gridls';
-import DragGrid from '@/components/homemade-grid';
+import DragGrid from '@/components/old Grid/homemade-grid';
 
 export function NutritionPageTest (){
     

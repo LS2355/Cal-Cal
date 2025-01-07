@@ -5,13 +5,13 @@ import { blocksStyles } from "@/app/styles/blockStyles"
 
 export default {
     BlockName: 'calcal-calories-burned',
-    BlockType: 'default',
+    BlockType: 'default', //only options are 'default' / 'full'
     BlockData: calcalCaloriesBurned
 }
 
 function calcalCaloriesBurned () {
   return (
-      <View style={{...blocksStyles.defualtBlockChild}}>
+      <View >
         <Text style={{color: 'white'}}>Calories Burned</Text>
       </View>
   )

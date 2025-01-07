@@ -95,7 +95,6 @@ function DragGrid () {
 						onPress={()=>onBlockPress}
 						onLongPress={()=>setActiveBlock(index)}
 						panHandlers={PanResponder.panHandlers}
-            position={}
 						style={buildBlockPosition(BlockType)}
 						key={BlockName}
 					>
@@ -109,7 +108,6 @@ function DragGrid () {
 							onPress={()=>onBlockPress}
 							onLongPress={()=>setActiveBlock(index)}
 							panHandlers={PanResponder.panHandlers}
-              position={}
 							style={buildBlockPosition(BlockType, blockElementObj.BlockHeight)}
 							key={BlockName}
 						>
@@ -198,11 +196,6 @@ useEffect(()=>{
     buildEquippedBlocks()
   }
 },[equippedBlockElements])
-
-
-
-
-
 
 
 

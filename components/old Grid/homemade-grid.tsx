@@ -13,12 +13,12 @@ import {
 	GestureResponderEvent,
 	I18nManager
 } from 'react-native';
-import {getEquippedBlockData, updateEquippedBlockData} from './Blocks/BlockDataMangement';
-import { addBlock, removeBlock, moveBlock, ImportsForEquippedBlocks, buildEquippedBlocks, generateBlockPositions} from './GridHandles/BlockManagment';
-import { BlockPostionCords } from './interfaces';
-import LoadingScreen from './loadingScreen';
-import Block from './Blocks/BlockTypes/Block';
-import BlockXL from './Blocks/BlockTypes/BlockXL';
+import {getEquippedBlockData, updateEquippedBlockData} from '../Blocks/BlockDataMangement';
+import { addBlock, removeBlock, moveBlock, ImportsForEquippedBlocks, buildEquippedBlocks, generateBlockPositions} from '../GridHandles/BlockManagment';
+import { BlockPostionCords } from '../interfaces';
+import LoadingScreen from '../loadingScreen';
+import Block from '../Blocks/BlockTypes/Block';
+import BlockXL from '../Blocks/BlockTypes/BlockXL';
 function DragGrid () {
 	//states
 	const [loading, setLoading] = useState(true)
